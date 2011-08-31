@@ -97,7 +97,7 @@ class FastEdit extends Backend
                     	if (!$this->User->hasAccess('modules', 'modules'))
             				return $strBuffer;
             		
-                        $do = (VERSION < '2.9' ? 'modules&act=edit' : 'themes&table=tl_module&act=edit');
+                        $do = (version_compare(VERSION, '2.9', '<') ? 'modules&act=edit' : 'themes&table=tl_module&act=edit');
                         $id = $step['object']->id;
                         break;
                     }
@@ -124,7 +124,7 @@ class FastEdit extends Backend
 		$GLOBALS['TL_MOOTOOLS']['fastedit_mediabox'] = '
 <script type="text/javascript" src="system/modules/fastedit/html/fastedit.js"></script>';
 
-        return '<div onmouseover="this.style.background=\'#EBFDD7\'; this.firstChild.style.visibility=\'visible\'" onmouseout="this.style.background=\'transparent\'; this.firstChild.style.visibility=\'hidden\'"><div style="position: absolute; border: 1px solid #FF0000; background-color: #FFFFFF; z-index:998; padding: 2px; padding-top: 4px; visibility: hidden"><a href="' . (VERSION > '2.8' ? 'contao' : 'typolight') . '/main.php?do='.$do.'&id='.$id.'" rel="fastedit"><img src="system/themes/default/images/edit.gif" alt="" /></a></div>'.$strBuffer.'</div>';
+        return '<div onmouseover="this.style.background=\'#EBFDD7\'; this.firstChild.style.visibility=\'visible\'" onmouseout="this.style.background=\'transparent\'; this.firstChild.style.visibility=\'hidden\'"><div style="position: absolute; border: 1px solid #FF0000; background-color: #FFFFFF; z-index:998; padding: 2px; padding-top: 4px; visibility: hidden"><a href="' . (version_compare(VERSION, '2.8', '>') ? 'contao' : 'typolight') . '/main.php?do='.$do.'&id='.$id.'" rel="fastedit"><img src="system/themes/default/images/edit.gif" alt="" /></a></div>'.$strBuffer.'</div>';
 	}
 	
 	public function saveUserId($strBuffer, $strTemplate)
