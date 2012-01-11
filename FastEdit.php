@@ -46,6 +46,7 @@ class FastEdit extends Backend
 		
 		$this->import('BackendUser', 'User');
 		$this->User->authenticate();
+		$this->User->id = '';
 
         $backtrace = debug_backtrace();
         foreach( $backtrace as $step )
